@@ -1,5 +1,7 @@
+import { Container } from "@mui/material";
+
 function Coins() {
-  return <div>Coins Page</div>;
+  return <Container>Coins Page</Container>;
 }
 
 export default Coins;

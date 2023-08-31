@@ -9,6 +9,10 @@ import Coins from "./pages/Coins";
 import CoinDetail from "./pages/CoinDetail";
 import Error from "./pages/Error";
 
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme();
+
 // Main routes for the application
 const router = createBrowserRouter([
   {
@@ -25,7 +29,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
