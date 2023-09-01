@@ -22,7 +22,7 @@ function Error() {
       <Header />
       <Container className={classes.container}>
         <h1>Opps!</h1>
-        <p>Page Not Found!</p>
+        <p>Something went wrong!</p>
       </Container>
       <Footer />;
     </>

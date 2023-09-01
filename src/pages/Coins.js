@@ -5,6 +5,7 @@ import { getCoins } from "../store/coinsSlice";
 import DataTable from "../components/DataTable";
 
 import { Container } from "@mui/material";
+import { StatusCodes } from "../utils/statusCodes";
 
 // Table heading and rows
 const columns = [
@@ -15,7 +16,7 @@ const columns = [
 
 function Coins() {
   const dispatch = useDispatch();
-  const { data: coinsData } = useSelector((state) => state.coins);
+  const { data: coinsData, status } = useSelector((state) => state.coins);
 
   useEffect(() => {
     dispatch(getCoins());
@@ -25,6 +26,10 @@ function Coins() {
   const handleRowClick = (id) => {
     console.log(`Row with ID ${id} clicked`);
   };
+
+  if (status === StatusCodes.LOADING) {
+    return <p>Loading .... </p>;
+  }
 
   return (
     <Container>
