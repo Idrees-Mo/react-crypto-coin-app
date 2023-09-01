@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { COINS_URL } from "../constants";
+
 // Initial State
 const initialState = {
   data: [],
@@ -24,10 +26,8 @@ export default coinsSlice.reducer;
 
 // Get coins async
 export function getCoins() {
-  const URL =
-    "/api/v3/coins/markets?vs_currency=AUD&order=market_cap_desc&per_page=100&sparkline=false&locale=en";
   return async function fetchCoinsThunk(dispatch, getState) {
-    const response = await fetch(URL);
+    const response = await fetch(COINS_URL);
     const data = await response.json();
     dispatch(fetchCoins(data));
   };
