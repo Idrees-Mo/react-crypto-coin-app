@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { Provider } from "react-redux";
+
 import App from "./App";
 import Home from "./pages/Home";
 import Coins from "./pages/Coins";
@@ -10,6 +12,7 @@ import CoinDetail from "./pages/CoinDetail";
 import Error from "./pages/Error";
 
 import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
+import store from "./store/store";
 
 const theme = createTheme();
 
@@ -29,10 +32,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 

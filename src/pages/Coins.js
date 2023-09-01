@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
-import { Container } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { getCoins } from "../store/coinsSlice";
 import DataTable from "../components/DataTable";
+
+import { Container } from "@mui/material";
 
 // Table heading and rows
 const columns = [
@@ -11,20 +14,12 @@ const columns = [
 ];
 
 function Coins() {
-  const [coinsData, setCoinsData] = useState([]);
-  const URL =
-    "/api/v3/coins/markets?vs_currency=AUD&order=market_cap_desc&per_page=100&sparkline=false&locale=en";
+  const dispatch = useDispatch();
+  const { data: coinsData } = useSelector((state) => state.coins);
 
   useEffect(() => {
-    fetch(URL)
-      .then((res) => {
-        console.warn(res);
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setCoinsData(data);
-      });
+    dispatch(getCoins());
+    // eslint-disable-next-line
   }, []);
 
   const handleRowClick = (id) => {
