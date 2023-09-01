@@ -52,7 +52,6 @@ export default coinsSlice.reducer;
 export const getCoins = createAsyncThunk("coins/get", async () => {
   try {
     const response = await fetch(URL);
-    debugger;
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
