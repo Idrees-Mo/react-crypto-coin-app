@@ -1,5 +1,5 @@
-// DataTable.js
-import React, { useState } from "react";
+import { useState } from "react";
+
 import {
   Table,
   TableBody,
@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
+// Styles for the table
 const useStyles = makeStyles((theme) => ({
   tableHeader: {
     fontWeight: "bold",

@@ -1,25 +1,32 @@
+import { useEffect, useState } from "react";
 import { Container } from "@mui/material";
+
 import DataTable from "../components/DataTable";
 
+// Table heading and rows
 const columns = [
   { field: "id", headerName: "ID" },
   { field: "name", headerName: "Name" },
-  { field: "age", headerName: "Age" },
-  { field: "hight", headerName: "Hight" },
-  // Add more columns as needed
+  { field: "current_price", headerName: "Current Price" },
 ];
 
-const generateData = (count) =>
-  Array.from({ length: count }, (_, index) => ({
-    id: index + 1,
-    hight: `7 cm`,
-    name: `Person ${index + 1}`,
-    age: Math.floor(Math.random() * 50) + 20,
-  }));
-
-const data = generateData(50);
-
 function Coins() {
+  const [coinsData, setCoinsData] = useState([]);
+  const URL =
+    "/api/v3/coins/markets?vs_currency=AUD&order=market_cap_desc&per_page=100&sparkline=false&locale=en";
+
+  useEffect(() => {
+    fetch(URL)
+      .then((res) => {
+        console.warn(res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setCoinsData(data);
+      });
+  }, []);
+
   const handleRowClick = (id) => {
     console.log(`Row with ID ${id} clicked`);
   };
@@ -29,7 +36,7 @@ function Coins() {
       <h1>Coins Page</h1>
       <DataTable
         columns={columns}
-        data={data}
+        data={coinsData}
         onRowClick={handleRowClick}
         itemsPerPage={10}
       />

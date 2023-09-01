@@ -1,11 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Container } from "@mui/material";
 
 // TODO
 // Active link styles not working, add a logo image
