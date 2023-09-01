@@ -26,32 +26,35 @@ function Footer() {
   return (
     <footer className={classes.footer}>
       <Typography variant="body1" align="center">
-        Dummy Text in the Center
+        Build with React, Redux & love!
       </Typography>
       <div className={classes.linkColumn}>
         <Link
           color="inherit"
-          href="#"
+          href="https://www.linkedin.com/in/muhammad-idrees-09120417/"
+          target="_blank"
           underline="none"
           className={classes.link}
         >
-          Link 1
+          LinkedIn
         </Link>
         <Link
           color="inherit"
-          href="#"
+          href="https://mo-portfolio-orcin.vercel.app/"
+          target="_blank"
           underline="none"
           className={classes.link}
         >
-          Link 2
+          Portfolio
         </Link>
         <Link
           color="inherit"
-          href="#"
+          href="https://github.com/Idrees-Mo"
           underline="none"
+          target="_blank"
           className={classes.link}
         >
-          Link 3
+          GitHub
         </Link>
       </div>
     </footer>

@@ -40,7 +40,7 @@ function DataTable({ columns, data, onRowClick, itemsPerPage = 5 }) {
   const paginatedData = data.slice(startIndex, endIndex);
 
   return (
-    <div>
+    <>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -74,7 +74,7 @@ function DataTable({ columns, data, onRowClick, itemsPerPage = 5 }) {
         page={page}
         onChange={handleChangePage}
       />
-    </div>
+    </>
   );
 }
 

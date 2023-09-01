@@ -3,6 +3,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { COINS_URL } from "../constants";
 import { StatusCodes } from "../utils/statusCodes";
 
+// Query parameters
+const queryParams = {
+  vs_currency: "AUD",
+  order: "market_cap_desc",
+  per_page: 100,
+  sparkline: false,
+  locale: "en",
+};
+// URL with query parameters
+const queryString = new URLSearchParams(queryParams).toString();
+const URL = `${COINS_URL}?${queryString}`;
+
 // Initial State
 const initialState = {
   data: [],
@@ -38,7 +50,15 @@ export default coinsSlice.reducer;
 
 // Fetch coins data with thunk
 export const getCoins = createAsyncThunk("coins/get", async () => {
-  const response = await fetch(COINS_URL);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(URL);
+    debugger;
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return error;
+  }
 });
