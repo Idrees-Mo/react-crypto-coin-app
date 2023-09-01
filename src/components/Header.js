@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { makeStyles } from "@mui/styles";
+import { Container } from "@mui/material";
 
 // TODO
 // Active link styles not working, add a logo image
@@ -28,28 +29,30 @@ function Header() {
 
   return (
     <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          {/* <img src="/" alt="Logo" className={classes.logo} /> */}
-          MyCoins
-        </Typography>
-        <Button
-          color="inherit"
-          component={NavLink}
-          to="/"
-          className={location.pathname === "/" ? classes.activeLink : ""}
-        >
-          Home
-        </Button>
-        <Button
-          color="inherit"
-          component={NavLink}
-          to="/coins"
-          className={location.pathname === "/coins" ? classes.activeLink : ""}
-        >
-          Coins
-        </Button>
-      </Toolbar>
+      <Container>
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            {/* <img src="/" alt="Logo" className={classes.logo} /> */}
+            MyCoins
+          </Typography>
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/"
+            className={location.pathname === "/" ? classes.activeLink : ""}
+          >
+            Home
+          </Button>
+          <Button
+            color="inherit"
+            component={NavLink}
+            to="/coins"
+            className={location.pathname === "/coins" ? classes.activeLink : ""}
+          >
+            Coins
+          </Button>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 }
