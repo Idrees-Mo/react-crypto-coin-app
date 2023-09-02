@@ -1,12 +1,8 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getCoins } from "../store/coinsSlice";
 import DataTable from "../components/DataTable";
 
 import { Container } from "@mui/material";
-import { StatusCodes } from "../utils/statusCodes";
 import { useNavigate } from "react-router-dom";
+import { useGetCoinsQuery } from "../store/coinsApiSlice";
 
 // Table heading and rows
 const columns = [
@@ -16,13 +12,7 @@ const columns = [
 ];
 
 function Coins() {
-  const dispatch = useDispatch();
-  const { data: coinsData, status } = useSelector((state) => state.coins);
-
-  useEffect(() => {
-    dispatch(getCoins());
-    // eslint-disable-next-line
-  }, []);
+  const { data: coinsData } = useGetCoinsQuery();
 
   // Redirect to coin detail page
   const navigate = useNavigate();
@@ -30,11 +20,6 @@ function Coins() {
     navigate(`/coins/${id}`);
     console.log(`Row with ID ${id} clicked`);
   };
-
-  // Show loading while loading
-  if (status === StatusCodes.LOADING) {
-    return <p>Loading .... </p>;
-  }
 
   return (
     <Container>

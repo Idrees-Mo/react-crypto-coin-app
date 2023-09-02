@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import coinsSlice from "./coinsSlice";
+import { apiSlice } from "./apiSlice";
 
 // App level store
 const store = configureStore({
   reducer: {
-    // reducers
-    coins: coinsSlice,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
   devTools: true,
 });
 
