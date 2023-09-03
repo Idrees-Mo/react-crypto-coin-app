@@ -14,6 +14,7 @@ export const coinsApiSlice = apiSlice.injectEndpoints({
           locale: "en",
         },
       }),
+      keepUnusedDataFor: 5,
     }),
 
     getCoinDetails: builder.query({
