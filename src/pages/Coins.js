@@ -12,7 +12,7 @@ const columns = [
 ];
 
 function Coins() {
-  const { data: coinsData } = useGetCoinsQuery();
+  const { data: coinsData, isLoading, error } = useGetCoinsQuery();
 
   // Redirect to coin detail page
   const navigate = useNavigate();
@@ -24,12 +24,20 @@ function Coins() {
   return (
     <Container>
       <h1>Coins Page</h1>
-      <DataTable
-        columns={columns}
-        data={coinsData}
-        onRowClick={handleRowClick}
-        itemsPerPage={10}
-      />
+      {isLoading ? (
+        <>Loading Coins ....</>
+      ) : error ? (
+        <>Opps!, something went wrong.</>
+      ) : (
+        <>
+          <DataTable
+            columns={columns}
+            data={coinsData}
+            onRowClick={handleRowClick}
+            itemsPerPage={10}
+          />
+        </>
+      )}
     </Container>
   );
 }
