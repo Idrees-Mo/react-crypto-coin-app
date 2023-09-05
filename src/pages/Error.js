@@ -4,7 +4,12 @@ import { makeStyles } from "@mui/styles";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-// Styles for the container
+/**
+ * Define and generate CSS-in-JS styles using the `makeStyles` function from the Material-UI library.
+ *
+ * @param {Function} theme - The Material-UI theme object.
+ * @returns {Object} - The generated CSS-in-JS styles.
+ */
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: `calc(100vh - 194px)`,
@@ -14,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Renders an error component with a header, container, title, and message.
+ *
+ * @returns {Component} - The error component.
+ */
 function Error() {
   const classes = useStyles();
 

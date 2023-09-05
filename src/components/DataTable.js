@@ -12,7 +12,12 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-// Styles for the table
+/**
+ * Creates and returns custom styles using the makeStyles hook from Material-UI.
+ *
+ * @param {object} theme - The theme object provided by Material-UI.
+ * @returns {object} - The custom styles object.
+ */
 const useStyles = makeStyles((theme) => ({
   tableHeader: {
     fontWeight: "bold",
@@ -26,6 +31,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+/**
+ * Creates a data table component.
+ *
+ * @param {Object} options - The configuration options for the data table.
+ * @param {Array} options.columns - An array of column objects specifying the columns to display in the table.
+ * @param {Array} options.data - An array of data objects representing the rows of the table.
+ * @param {Function} options.onRowClick - A callback function to be called when a row is clicked.
+ * @param {number} [options.itemsPerPage=5] - The number of items to display per page.
+ *
+ * @return {JSX.Element} - The rendered data table component.
+ */
 
 function DataTable({ columns, data, onRowClick, itemsPerPage = 5 }) {
   const classes = useStyles();

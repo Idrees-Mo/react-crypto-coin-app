@@ -1,6 +1,12 @@
 import { Typography, Link } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
+/**
+ * Custom hook that generates styles using the makeStyles function from Material-UI.
+ *
+ * @param {Object} theme - The theme object from Material-UI.
+ * @returns {Object} - An object containing generated styles.
+ */
 const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.grey[200], // Use a color that suits your design

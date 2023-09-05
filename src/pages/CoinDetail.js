@@ -11,10 +11,14 @@ import {
   Button,
 } from "@mui/material";
 
+/**
+ * Retrieves and displays details about a specific coin.
+ *
+ * @return {JSX.Element} The component to render the coin details.
+ */
 function CoinDetail() {
   const { coinId } = useParams();
 
-  // TODO the query is not creating corret URL
   const { data, isLoading, error } = useGetCoinDetailsQuery(coinId);
   console.warn({
     data,

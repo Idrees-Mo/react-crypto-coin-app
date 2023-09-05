@@ -4,13 +4,23 @@ import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useGetCoinsQuery } from "../store/coinsApiSlice";
 
-// Table heading and rows
+/**
+ *  Table heading and rows
+ * @typedef {Object} Column
+ * @property {string} field - The field name of the column.
+ * @property {string} headerName - The header name for the column.
+ */
 const columns = [
   // { field: "id", headerName: "ID" },
   { field: "name", headerName: "Name" },
   { field: "current_price", headerName: "Current Price" },
 ];
 
+/**
+ * Represents a Coin component that fetches coin data and displays it in a table
+ * @function Coin
+ * @returns {JSX.Element} - The Coin component JSX
+ */
 function Coins() {
   const { data: coinsData, isLoading, error } = useGetCoinsQuery();
 
